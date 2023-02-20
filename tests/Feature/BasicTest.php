@@ -34,5 +34,11 @@ class BasicTest extends TestCase
         $this->assertNull($box->takeOne());
     }
 
-    
+    public function testStartWithLetter(){
+        $box = new Box(['toy','cat','torch','tissue']);
+        $result = $box->startsWith('t');
+        $this->assertCount(3,$result);
+        $this->assertNotContainsEquals(['torch'],$result);
+        $this->assertEmpty($box->startsWith('s'));
+    }
 }
